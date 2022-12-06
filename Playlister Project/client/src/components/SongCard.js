@@ -31,15 +31,12 @@ function SongCard(props) {
         let targetIndex = index;
         let sourceIndex = Number(event.dataTransfer.getData("song"));
         setDraggedTo(false);
-
-        // UPDATE THE LIST
         store.addMoveSongTransaction(sourceIndex, targetIndex);
     }
     function handleRemoveSong(event) {
         store.showRemoveSongModal(index, song);
     }
     function handleClick(event) {
-        // DOUBLE CLICK IS FOR SONG EDITING
         if (event.detail === 2) {
             store.showEditSongModal(index, song);
         }
@@ -47,32 +44,9 @@ function SongCard(props) {
 
     let cardClass = "list-card unselected-list-card";
     return (
-        <div
-            key={index}
-            id={'song-' + index + '-card'}
-            className={cardClass}
-            onDragStart={handleDragStart}
-            onDragOver={handleDragOver}
-            onDragEnter={handleDragEnter}
-            onDragLeave={handleDragLeave}
-            onDrop={handleDrop}
-            draggable="true"
-            onClick={handleClick}
-        >
-            {index + 1}.
-            <a
-                id={'song-' + index + '-link'}
-                className="song-link"
-                href={"https://www.youtube.com/watch?v=" + song.youTubeId}
-                target="_blank">
-                {song.title} by {song.artist}
-            </a>
-            <IconButton
-                id={"remove-song-" + index}
-                sx={{float: 'right', padding: 0}}
-                size='large'
-                onClick={handleRemoveSong}
-            >
+        <div key={index} id={'song-' + index + '-card'} className={cardClass} onDragStart={handleDragStart} onDragOver={handleDragOver} onDragEnter={handleDragEnter} onDragLeave={handleDragLeave} onDrop={handleDrop} draggable="true" onClick={handleClick}>
+            {index + 1}. {song.title} by {song.artist}
+            <IconButton id={"remove-song-" + index} sx={{float: 'right', padding: 0}} size='large' onClick={handleRemoveSong}>
                 <Delete fontSize='large' />
             </IconButton>
         </div>
