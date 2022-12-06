@@ -3,18 +3,17 @@ import GlobalStoreContext from '../store';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import { Button, Typography } from '@mui/material';
-
+import { Button, Typography} from '@mui/material'
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 800,
+    height: 270,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
-    borderRadius: '20px',
     p: 4,
 };
 
@@ -29,15 +28,18 @@ export default function MUIRemoveSongModal() {
         store.hideModals();
     }
     
+    let modalClass = "modal";
+    if (store.isRemoveSongModalOpen()) {
+        modalClass += " is-visible";
+    }
+
     let songTitle = "";
     if (store.currentSong) {
         songTitle = store.currentSong.title;
     }
 
     return (
-        <Modal
-            open={store.currentModal === "REMOVE_SONG"}
-        >
+        <Modal open={store.currentModal === "REMOVE_SONG"}>
             <Box sx={style}>
             <Box>
                     <Typography variant='h4'>
@@ -50,22 +52,14 @@ export default function MUIRemoveSongModal() {
                     Are you sure you wish to permanently remove <span>{songTitle}</span> from the playlist?
                     </Typography>
                 </Box>
-                <Box height={'2.5rem'}></Box>
                 <Box>
-                    <Button
-                        variant='contained'
-                        sx={{fontSize: '1.0rem'}}
-                        onClick={handleConfirmRemoveSong}
-                    >
-                        Confirm
-                    </Button>
-                    <Button
-                        variant='contained'
-                        sx={{float: 'right', fontSize: '1.0rem'}}
-                        onClick={handleCancelRemoveSong}
-                    >
+                    <Button variant='contained' sx={{float: 'right', fontSize: '1.0rem'}} onClick={handleCancelRemoveSong}>
                         Cancel
                     </Button>
+                    <Button variant='contained' sx={{float: 'right', fontSize: '1.0rem'}} onClick={handleConfirmRemoveSong}>
+                        Confirm
+                    </Button>
+                    
                 </Box>
             </Box>
         </Modal>
