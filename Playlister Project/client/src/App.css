@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Tangerine&display=swap');
 :root {
   /* 
         FIRST WE'LL DEFINE OUR SWATCHES, i.e. THE COMPLEMENTARY
@@ -24,10 +25,10 @@ body {
   background-color: var(--swatch-primary);
   font-family: "Lexend Exa";
   position: absolute;
-  width: 80%;
-  left: 10%;
-  height: 90%;
-  top: 5%;
+  width: 95%;
+  left: 2.5%;
+  height: 95%;
+  top: 2.5%;
 }
 
 #app-root {
@@ -38,30 +39,13 @@ body {
   left: 0%;
 }
 
-#top5-banner {
-  position: absolute;
-  left: 0%;
-  top: 0%;
-  width: 100%;
-  height: 10%;
-  float: left;
-  background-image: linear-gradient(to bottom, #b8b808, #636723);
-  color: white;
-  font-size: 48pt;
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 10px;
-}
 #splash-screen {
-  background-image: linear-gradient(to bottom, #b8b808, #636723);
+  background-image: linear-gradient(to bottom, #129880, #2ac38d, #1dcf4f);
   color: white;
   font-size: 5vw;
   border-color: black;
-  border-width: 2px;
+  border-width: 0px;
   border-style: solid;
-  border-radius: 10px;
-  padding-left: 10%;
   padding-top: 5%;
   padding-bottom: 5%;
   height:70%;
@@ -74,27 +58,7 @@ body {
   float: right;
 }
 
-.top5-button,
-.top5-button-disabled {
-  font-size: 36pt;
-  border-width: 0px;
-  float: left;
-  color: black;
-  cursor: pointer;
-  opacity: 100%;
-}
-
-.top5-button:hover {
-  cursor: pointer;
-  color: black;
-}
-
-.top5-button-disabled {
-  opacity: 0.25;
-  cursor: not-allowed;
-}
-
-#top5-list-selector {
+#homescreen {
   position: absolute;
   left: 0%;
   top: 10%;
@@ -103,61 +67,66 @@ body {
   background-color: var(--swatch-primary);
 }
 
-#top5-workspace {
-  position: absolute;
-  left: 0%;
-  top: 10%;
-  width: 100%;
-  height: 80%;
-  background-color: var(--swatch-accent);
-}
-
 #playlister-statusbar {
-  position: sticky;
+  position: absolute;
   left: 0%;
   top: 90%;
   width: 100%;
   height: 10%;
-  background-color: rgb(137, 148, 139);
-  color: white;
   display: flex;
+  background-color: #bfbfbf;
   align-items: center;
   justify-content: center;
   font-size: 36pt;
 }
 
-#list-selector-heading {
-  position: relative;
+#homescreen-heading {
+  position: absolute;
   left: 0%;
   top: 0%;
   width: 100%;
   height: 10%;
-  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: left;
   font-size: 24pt;
   font-weight: bold;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: left;
+}
+
+#homescreen-sections {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  margin-top: 4.5%;
+  margin-bottom: 5%;
+  height: 87.5%;
+  width: 100%;
 }
 
 #add-list-button {
   float: left;
 }
 
-#list-selector-list {
-  left: 0%;
-  top: 10%;
-  width: 100%;
-  height: 90%;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
+#playlist-selector-list {
+  width: 60%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#player-comment-tab {
+  width: 40%;
+  height: 100%;
 }
 
 .list-card,
 .selected-list-card,
 .unselected-list-card {
   font-size: 18pt;
+  color: white;
   margin: 10px;
   padding: 20px;
   border-radius: 25px;
@@ -173,7 +142,7 @@ body {
 
 .unselected-list-card:hover {
   cursor: pointer;
-  background-color: var(--swatch-contrast);
+  background-color: #FFAE42;
   color: white;
 }
 
@@ -183,21 +152,12 @@ body {
 }
 
 .unselected-list-card {
-  background-color: var(--swatch-complement);
+  background-color: #528AAE;
 }
 
 .list-card-button {
   float: right;
-  transform: scale(2);
-}
-
-#workspace-home,
-#workspace-edit {
-  position: absolute;
-  left: 0%;
-  top: 0%;
-  width: 100%;
-  height: 100%;
+  font-size: 18pt;
 }
 
 #edit-numbering {
@@ -218,39 +178,8 @@ body {
   background-color: var(--swatch-primary);
 }
 
-.item-number,
-.top5-item,
-.top5-item-dragged-to {
-  display: flex;
-  align-items: center;
-  font-size: 48pt;
-  height: 20%;
-}
-
-.item-number {
-  justify-content: center;
-  width: 100%;
-  border: 1px 0px 1px 1px;
-  border-color: black;
-  background-color: linen;
-  color: black;
-}
-
 input {
   font-size: 20pt;
-}
-
-.top5-item,
-.top5-item-dragged-to {
-  text-align: left;
-  width: 95%;
-  padding-left: 5%;
-}
-.top5-item {
-  background-color: var(--swatch-complement);
-}
-.top5-item-dragged-to {
-  background-color: var(--swatch-accent);
 }
 
 .disabled {
@@ -281,12 +210,6 @@ input {
   transition: all 0.35s ease-in;
   font-family: var(--font-primary);
 }
-
-span {
-  font-weight: bolder;
-  font-style: italic;
-}
-
 
 .modal.is-visible {
   visibility: visible;
@@ -326,13 +249,120 @@ span {
   font-size: 1.5rem;
 }
 
-.modal p + p {
-  margin-top: 1rem;
+.modal-root {
+  position: relative;
+  max-width: 1200vw;
+  max-height: 600vh;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  background: var(--swatch-complement);
+  cursor: default;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  box-shadow: 5px 10px #888888;
+}
+
+.modal-root > * {
+  padding: 1rem;
+}
+
+.modal-north {
+  font-size:32pt;
+  font-weight: bold;
+  background-color: #669966;
+  color:white;
+}
+
+.modal-center {
+  display: grid;
+  grid-template-columns: 30% 65%;
+  grid-template-rows: 33% 33% 33%;
+  gap: 10px 20px;
+  font-size: 32pt;
 }
 
 .modal-control {
   cursor: pointer;
   width: 20%;
+}
+
+span {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.modal-south {
+  display:flex;
+  flex-direction: row;
+  background-color: lightgray;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-center-content {
+  grid-column: 1 / 3;
+  grid-row: 1 / 4;
+}
+
+.modal-prompt {  
+  font-size:28pt;
+  font-weight: bold;
+}
+
+.modal-textfield {
+  font-size:28pt;
+}
+
+.modal-button {
+  font-size: 20pt;
+}
+
+#title-prompt {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+#edit-song-modal-title-textfield {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+#artist-prompt {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+#edit-song-modal-artist-textfield {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+#you-tube-id-prompt {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+
+#edit-song-modal-youTubeId-textfield {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+.confirm-cancel-box {
+  grid-column: 1 / 3;
+  grid-row: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-button {
+  margin:5px;
+}
+
+.modal p + p {
+  margin-top: 1rem;
 }
 
 .dialog-header {
