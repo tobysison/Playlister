@@ -32,7 +32,7 @@ function Statusbar() {
 
     return (
         <Box id="playlister-statusbar">
-            {content}
+            { content }
         </Box>
     );
 }

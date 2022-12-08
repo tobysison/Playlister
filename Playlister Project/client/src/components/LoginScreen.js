@@ -15,7 +15,6 @@ export default function LoginScreen() {
             formData.get('email'),
             formData.get('password')
         );
-
     };
 
     return (
@@ -42,7 +41,8 @@ export default function LoginScreen() {
                                 </Link>
                             </Grid>
                         </Grid>
-                        <MUIAccountErrorModal></MUIAccountErrorModal>
+                        <MUIAccountErrorModal>
+                        </MUIAccountErrorModal>
                     </Box>
                 </Box>
             </Grid>

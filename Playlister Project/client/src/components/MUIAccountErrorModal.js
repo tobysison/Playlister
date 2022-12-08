@@ -15,12 +15,16 @@ export default function MUIAccountErrorModal() {
             onClose={handleClose}
             aria-labelledby="modal-north"
             aria-describedby="modal-center-content">
-            <DialogTitle id="modal-north" component="h6" variant="h2" style={{fontSize: 30}}>Attention!</DialogTitle> 
+            <DialogTitle id="modal-north" component="h6" variant="h2" style={{fontSize: 30}}>
+                Attention!
+            </DialogTitle> 
             <DialogContent>
                 <Alert id="modal-center-content" severity="warning">{auth.errMsg}</Alert> 
             </DialogContent>
             <DialogActions> 
-                <Button type="close" variant='text' onClick={handleClose}>Close</Button>
+                <Button type="close" variant='text' onClick={ handleClose }>
+                    Close
+                </Button>
             </DialogActions>
         </Dialog>
     )

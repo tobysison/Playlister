@@ -23,6 +23,10 @@ export default function AppBanner() {
         auth.logoutUser();
     };
     
+    const handleProfileMenuOpen = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
     const handleMenuClose = () => {
         setAnchorEl(null);
     };
@@ -30,10 +34,6 @@ export default function AppBanner() {
     const handleGuestLogIn = () => {
         handleMenuClose();
         auth.loginGuest();
-    };
-
-    const handleProfileMenuOpen = (event) => {
-        setAnchorEl(event.currentTarget);
     };
 
     const menuId = 'primary-search-account-menu';
@@ -53,9 +53,15 @@ export default function AppBanner() {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}><Link to='/login/'>Login</Link></MenuItem>
-            <MenuItem onClick={handleMenuClose}><Link to='/register/'>Create New Account</Link></MenuItem>
-            <MenuItem onClick={handleGuestLogIn}><Link to='/'>Continue as Guest</Link></MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+                <Link to='/login/'>Login</Link>
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+                <Link to='/register/'>Create New Account</Link>
+            </MenuItem>
+            <MenuItem onClick={handleGuestLogIn}>
+                <Link to='/'>Continue as Guest</Link>
+            </MenuItem>
         </Menu>
     );
     const loggedInMenu = 
@@ -74,7 +80,9 @@ export default function AppBanner() {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            <MenuItem onClick={handleLogout}>
+                Logout
+            </MenuItem>
         </Menu>        
 
     let menu = loggedOutMenu;
@@ -84,18 +92,16 @@ export default function AppBanner() {
     
     function getAccountMenu(loggedIn) {
         let userInitials = auth.getUserInitials();
-        console.log("userInitials: " + userInitials);
         if (loggedIn) 
             return <div>{userInitials}</div>;
-        else
-            return <AccountCircle />;
+        return <AccountCircle />;
     }
 
     return (
         <Box sx = {{ flexGrow: 1 }}>
             <AppBar position="static" style={{ background: '#bfbfbf' }}>
                 <Toolbar>
-                    <Typography style={{ color:'red', fontFamily: 'Tangerine', fontSize: 40 }}>                        
+                    <Typography style={{ color:'red', fontFamily: 'Tangerine', fontSize: 60, fontWeight: 'bold'}}>                        
                         Playlister 
                     </Typography>
                     <Box sx={{ display: { xs: 'none', md: 'flex', marginLeft: 'auto' } }}> 

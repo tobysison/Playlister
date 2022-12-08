@@ -28,6 +28,14 @@ function ListCard(props) {
         setEditActive(newActive);
     }
 
+    function handleKeyPress(event) {
+        if (event.code === "Enter") {
+            let id = event.target.id.substring("list-".length);
+            store.changeListName(id, text);
+            toggleEdit();
+        }
+    }
+
     function handleToggleEdit(event) {
         event.stopPropagation();
         toggleEdit();
@@ -38,14 +46,6 @@ function ListCard(props) {
         let _id = event.target.id;
         _id = ("" + _id).substring("delete-list-".length);
         store.markListForDeletion(id);
-    }
-
-    function handleKeyPress(event) {
-        if (event.code === "Enter") {
-            let id = event.target.id.substring("list-".length);
-            store.changeListName(id, text);
-            toggleEdit();
-        }
     }
 
     function handleLikeDislikeListen(event, type) {
@@ -64,8 +64,6 @@ function ListCard(props) {
             let _id = event.target.id;
             if (_id.indexOf('list-card-text-') >= 0)
                 _id = ("" + _id).substring("list-card-text-".length);
-
-            console.log("load " + event.target.id);
             store.addCommentLikeDislikeListen('none', 'none', false, false, true, id);
         }
     }
@@ -83,7 +81,6 @@ function ListCard(props) {
     }
 
     function handleLoadUser(event) {
-        console.log("loaduser")
         event.stopPropagation();
         store.loadUser(auth.user.email, idNamePair.by);
     }
@@ -121,13 +118,13 @@ function ListCard(props) {
     if(idNamePair.publishDate === "N/A") {
         cardElement =
         <Paper id={idNamePair._id} sx={{ margin: '10px', width: '95%', borderRadius: '5px' }}> 
-            <ListItem id={idNamePair._id} key={idNamePair._id} sx={{ height: '20%', p: 1, flexWrap: 'wrap', bgcolor: '#C791FD', "&:hover":{ bgcolor: '#C791FD' }, borderTopRightRadius: '5px', borderTopLeftRadius: '5px' }} button onDoubleClick={handleToggleEdit}>
+            <ListItem id={idNamePair._id} key={idNamePair._id} sx={{ height: '20%', p: 1, flexWrap: 'wrap', bgcolor: '#8fe340', "&:hover":{ bgcolor: '#8fe340' }, borderTopRightRadius: '5px', borderTopLeftRadius: '5px' }} button onDoubleClick={handleToggleEdit}>
                 <Box sx={{ pr: 10, pl: 1, fontSize: 30, fontWeight: 'bold', width: '100%' }}>{idNamePair.name}</Box>
                 <Box sx={{ pl: 1, fontSize: 20, width: '55%'}}>By: {<Link component='button' onClick={handleLoadUser} sx={{ fontSize: 20 }}>{idNamePair.by} </Link>} </Box>
                 <Box sx={{ fontSize: 15, width: '25%'}}>Published: {idNamePair.publishDate}</Box>
                 <Box sx={{ fontSize: 15, width: '15%'}}>Listens: {idNamePair.listens}</Box>
             </ListItem>
-            <Accordion id={idNamePair._id} sx={{ bgcolor: '#DDC2f7', '&:before': {display: 'none'} }} elevation={0} disableGutters onChange={(event, expanded) => { if(expanded) {handleLoadList(event, idNamePair._id)} }}>
+            <Accordion id={idNamePair._id} sx={{ bgcolor: '#b7f0a5', '&:before': {display: 'none'} }} elevation={0} disableGutters onChange={(event, expanded) => { if(expanded) {handleLoadList(event, idNamePair._id)} }}>
                 <AccordionSummary expandIcon={<KeyboardDoubleArrowDownIcon style={{ fontSize: 30, color: 'black' }}/>}/>
                 <AccordionDetails sx={{ maxHeight: 400, overflowY: 'auto' }}>
                     <SongListCard songs={idNamePair.songs}/>
@@ -172,10 +169,7 @@ function ListCard(props) {
     if (editActive) {
         cardElement = <TextField margin="normal" required width='100%' id={"list-" + idNamePair._id} label="Playlist Name" name="name" autoComplete="Playlist Name" className='list-card' onKeyPress={handleKeyPress} onChange={handleUpdateText} defaultValue={idNamePair.name} inputProps={{style: {fontSize: 48}}} InputLabelProps={{style: {fontSize: 24}}} autoFocus/>
     }
-
-    return (
-        cardElement
-    );
+    return (cardElement);
 }
 
 export default ListCard;

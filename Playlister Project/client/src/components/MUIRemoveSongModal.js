@@ -49,7 +49,7 @@ export default function MUIRemoveSongModal() {
                 <hr></hr>
                 <Box>
                     <Typography variant='h5'>
-                    Are you sure you wish to permanently remove <span>{songTitle}</span> from the playlist?
+                        Are you sure you wish to permanently remove <span>{songTitle}</span> from the playlist?
                     </Typography>
                 </Box>
                 <Box>
@@ -59,7 +59,6 @@ export default function MUIRemoveSongModal() {
                     <Button variant='contained' sx={{float: 'right', fontSize: '1.0rem'}} onClick={handleConfirmRemoveSong}>
                         Confirm
                     </Button>
-                    
                 </Box>
             </Box>
         </Modal>

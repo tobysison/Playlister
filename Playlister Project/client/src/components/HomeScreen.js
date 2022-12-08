@@ -6,12 +6,13 @@ import PropTypes from 'prop-types';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import SortIcon from '@mui/icons-material/Sort';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
 import YoutubePlayer from './YoutubePlayer';
 import CommentListCard from './CommentListCard';
 import AuthContext from '../auth';
+import SortIcon from '@mui/icons-material/Sort';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+
 
 const HomeScreen = () => {
     const { store } = useContext(GlobalStoreContext);
@@ -35,11 +36,21 @@ const HomeScreen = () => {
     const menu = (
         <Menu anchorEl={anchorEl} anchorOrigin={{ vertical: 'top', horizontal: 'right',}} id='primary-search-account-menu' keepMounted
             transformOrigin={{vertical: 'top', horizontal: 'right',}} open={isMenuOpen}onClose={handleMenuClose}>
-            <MenuItem onClick={handleMenuClose}>Name &#91;A - Z&#93;</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Publish Date &#91;Newest&#93;</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Listens &#91;High - Low&#93;</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Likes &#91;High - Low&#93;</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Dislikes &#91;High - Low&#93;</MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+                Name &#91;A - Z&#93;
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+                Publish Date &#91;Newest&#93;
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+                Listens &#91;High - Low&#93;
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+                Likes &#91;High - Low&#93;
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+                Dislikes &#91;High - Low&#93;
+            </MenuItem>
         </Menu>
     );
 
@@ -47,7 +58,7 @@ const HomeScreen = () => {
     if (store) {
         listCard = 
             <List sx={{ left: '1%', bottom: '1%', height: '100%', width: '100%', bgcolor: '#eeeeedd' }}>
-            {store.idNamePairs.map((pair) => (<ListCard key={pair._id} idNamePair={pair}/>))}
+                {store.idNamePairs.map((pair) => (<ListCard key={pair._id} idNamePair={pair}/>))}
             </List>;
     }  
 
@@ -73,10 +84,6 @@ const HomeScreen = () => {
         };
     }
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
-
     function handleLoadHome() {
         store.setHome();
     } 
@@ -89,8 +96,12 @@ const HomeScreen = () => {
         store.setSearchMode("u");
     } 
 
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
     function handleSearch(event) {
-        if(event.key === "Enter") {
+        if (event.key === "Enter") {
             let criteria = event.target.value;
             store.loadIdNamePairs(criteria);
         }
@@ -116,7 +127,7 @@ const HomeScreen = () => {
     if(auth.user.email !== "guest"){
         homeUse =
             <Button aria-label="home" id="home-button" style={{ color: "#000000" }} onClick={handleLoadHome}>
-            <HomeOutlinedIcon style={{ fontSize: 50 }}/>
+                <HomeOutlinedIcon style={{ fontSize: 50 }}/>
             </Button>;
     }
 
@@ -134,7 +145,7 @@ const HomeScreen = () => {
                 <Button size="small" edge="end" aria-label="sort by" aria-controls='primary-search-account-menu' aria-haspopup="true" onClick={handleMenuOpen} color="inherit" endIcon={<SortIcon/>} sx={{ ml: 10, fontSize: 20}}> 
                     SORT BY
                 </Button>
-                {menu}
+                { menu }
             </Box>
             <Box id="homescreen-sections">
                 <Box id="playlist-selector-list">

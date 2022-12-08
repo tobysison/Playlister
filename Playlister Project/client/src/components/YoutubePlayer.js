@@ -7,14 +7,16 @@ import StopIcon from '@mui/icons-material/Stop';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import YouTube from 'react-youtube';
 
+//Component for Youtube
+
 const YoutubePlayer = () => {
     const { store } = useContext(GlobalStoreContext);
     const [currentSong, setCurrentSong] = useState(0);
     const [eventTarget, setEventTarget] = useState();
-    let playlistName="";
-    let title="";
-    let artist="";
-    let playlist=[];
+    let playlistName = "";
+    let title = "";
+    let artist = "";
+    let playlist = [];
 
      if(store.currentList && store.currentList.songs) {
          playlist = store.currentList.songs.map((song) => (song.youTubeId));
@@ -74,21 +76,29 @@ const YoutubePlayer = () => {
         <div>
             <YouTube key={playlist[currentSong]} videoId={playlist[currentSong]} opts = {{height: 290, width: '100%', playerVars: {playsinline: 1, autoplay: 1, origin: "https://www.youtube.com"}}} onReady={onPlayerReady} onStateChange={onPlayerStateChange}/>
             <Paper id="player-info" sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column', bgcolor: '#ADD8E6' }}>
-                <Typography sx={{ pl: 1, pt: 1, fontWeight: 'bold' }}>Playlist:&#32;{playlistName}</Typography> 
-                <Typography sx={{ pl: 1, fontWeight: 'bold' }}>Song&#32;#:&#32;{currentSong}</Typography>  
-                <Typography sx={{ pl: 1, fontWeight: 'bold' }}>Title:&#32;{title}</Typography>  
-                <Typography sx={{ pl: 1, fontWeight: 'bold' }}>Artist:&#32;{artist}</Typography>
+                <Typography sx={{ pl: 1, pt: 1, fontWeight: 'bold'}}>
+                    Playlist:&#32;{playlistName}
+                </Typography> 
+                <Typography sx={{ pl: 1, fontWeight: 'bold'}}>
+                    Song&#32;#:&#32;{currentSong}
+                </Typography>  
+                <Typography sx={{ pl: 1, fontWeight: 'bold'}}>
+                    Title:&#32;{title}
+                </Typography>  
+                <Typography sx={{ pl: 1, fontWeight: 'bold'}}>
+                    Artist:&#32;{artist}
+                </Typography>
                 <Box display="flex" alignItems="center" justifyContent="center"> 
-                    <IconButton id='prev-song-button' sx={{bgColor: 'transparent', mx: 1}} onClick={decSong} variant="contained">
+                    <IconButton id='prev-song-button' sx={{bgColor: 'transparent', mx: 1}} onClick={ decSong } variant="contained">
                         <FastRewindIcon sx={{ fontSize: 30 }}/>
                     </IconButton>
-                    <IconButton id='stop-song-button' sx={{bgColor: 'transparent', mx: 1}} onClick={handleStop} variant="contained">
+                    <IconButton id='stop-song-button' sx={{bgColor: 'transparent', mx: 1}} onClick={ handleStop } variant="contained">
                             <StopIcon sx={{ fontSize: 30 }}/>
                     </IconButton>
-                    <IconButton id='play-song-button' sx={{bgColor: 'transparent', mx: 1}} onClick={handlePlay} variant="contained">
+                    <IconButton id='play-song-button' sx={{bgColor: 'transparent', mx: 1}} onClick={ handlePlay } variant="contained">
                             <PlayArrowIcon sx={{ fontSize: 30 }}/>
                     </IconButton>
-                    <IconButton id='next-song-button' sx={{bgColor: 'transparent', mx: 1}} onClick={incSong} variant="contained">
+                    <IconButton id='next-song-button' sx={{bgColor: 'transparent', mx: 1}} onClick={ incSong } variant="contained">
                             <FastForwardIcon sx={{ fontSize: 30 }}/>
                     </IconButton>
                 </Box>

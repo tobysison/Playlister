@@ -26,12 +26,10 @@ function SongListCard(props) {
             <List id="playlist-cards" sx={{ pd: 5, left: '2.5%', height: '100%', width: '95%', bgcolor: '#eeeeedd'  }}>
                 {songs.map((song, index) => (<SongCard id={'playlist-song-' + (index)} key={'playlist-song-' + (index)} index={index} song={song}/>))}
             </List>
-            {modalJSX}
+            { modalJSX }
          </Box>            
 
-    return (
-        display
-    )
+    return ( display )
 }
 
 export default SongListCard;

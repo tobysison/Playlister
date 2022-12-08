@@ -18,9 +18,7 @@ function PublishedSongListCard(props) {
                     </Typography>))  
             }
         </Paper>            
-    return (
-        display
-    )
+    return ( display )
 }
 
 export default PublishedSongListCard;

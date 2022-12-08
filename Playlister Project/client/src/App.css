@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Tangerine&display=swap');
+
 :root {
   /* 
         FIRST WE'LL DEFINE OUR SWATCHES, i.e. THE COMPLEMENTARY
@@ -40,7 +41,7 @@ body {
 }
 
 #splash-screen {
-  background-image: linear-gradient(to bottom, #129880, #2ac38d, #1dcf4f);
+  background-image: linear-gradient(to bottom, #616060, #535353, #252525);
   color: white;
   font-size: 5vw;
   border-color: black;
@@ -142,7 +143,7 @@ body {
 
 .unselected-list-card:hover {
   cursor: pointer;
-  background-color: #FFAE42;
+  background-color: #38aba4;
   color: white;
 }
 

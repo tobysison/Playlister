@@ -26,7 +26,7 @@ function CommentListCard() {
     if(store.currentList) {
         display = 
             <Box sx={{ height: 350}} >
-                <List id="playlist-cards" sx={{ pd: 5, mr: 1, height: '100%', width: '100%', bgcolor: '#eeeeedd', overflowY: 'auto', overflowX: 'hidden' }}>
+                <List id="playlist-cards" sx={{ pd: 5, mr: 1, height: '100%', width: '100%', bgcolor: '#ffffff', overflowY: 'auto', overflowX: 'hidden' }}>
                     {store.currentList.comments.map((comment, index) => (
                     <CommentCard id={'playlist-comment'+index} key={'playlist-comment'+index} comment={comment}/>))}
                 </List>
@@ -36,15 +36,12 @@ function CommentListCard() {
     else {
         display =
         <Box sx={{ height: 350}}>
-        <List id="playlist-cards" sx={{ pd: 5, left: '2.5%', height: '100%', width: '95%', bgcolor: '#eeeeedd', overflowY: 'auto' }}>
-        </List>
-        {displayB}
+            <List id="playlist-cards" sx={{ pd: 5, left: '2.5%', height: '100%', width: '95%', bgcolor: '#eeeeedd', overflowY: 'auto' }}>
+            </List>
+            {displayB}
         </Box>
     }
-
-    return (
-        display
-    )
+    return ( display )
 }
 
 export default CommentListCard;
